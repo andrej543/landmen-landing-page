@@ -26,7 +26,7 @@
       <li><a href="#how">How it works</a></li>
       <li><a href="#roi">ROI</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Book a walkthrough →</a>
+    <button type="button" class="nav-cta js-booking-open">Book a walkthrough →</button>
   </div>
 </nav>
 
@@ -39,7 +39,7 @@
       Basinfoundry automates the slow, repetitive work that eats your margin: courthouse research, document review, runsheets, ownership chains, and client reporting. Your examiners and agents spend their day on judgment calls, not data entry.
     </p>
     <div class="hero-cta-row">
-      <a href="#contact" class="btn-primary">Book a 30-min walkthrough →</a>
+      <button type="button" class="btn-primary js-booking-open">Book a 30-min walkthrough →</button>
       <a href="#roi" class="btn-secondary">See the ROI on one project</a>
     </div>
     <div class="hero-metrics">
@@ -391,7 +391,18 @@
   <div class="container booking-section-inner">
     <div class="section-label" style="justify-content:center;">Next step</div>
     <h2>Let's talk <em>efficiency.</em></h2>
-    <p class="booking-lead">
+    <p class="booking-lead booking-lead--teaser">
+      Ready to see how Basinfoundry fits your workflow? Open the walkthrough form, tell us about your firm, then pick a time — no slides, no generic demo.
+    </p>
+    <button type="button" class="btn-primary js-booking-open">Book a walkthrough →</button>
+  </div>
+</section>
+
+<dialog id="booking-dialog" class="booking-dialog" aria-labelledby="booking-dialog-title">
+  <div class="booking-dialog-scroll">
+    <button type="button" class="booking-dialog-close" aria-label="Close walkthrough form">&times;</button>
+    <h2 id="booking-dialog-title" class="booking-dialog-title">Book a walkthrough</h2>
+    <p class="booking-lead booking-lead--modal">
       Tell us a bit about your firm so we can prep for the call. Then pick a time that works — no slides, no generic demo.
     </p>
 
@@ -461,7 +472,7 @@
       </div>
     </form>
   </div>
-</section>
+</dialog>
 
 <div id="booking-success-overlay" class="booking-success-overlay" hidden aria-hidden="true">
   <div class="booking-success-card">
@@ -509,7 +520,7 @@
         <h5>Company</h5>
         <ul>
           <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
+          <li><a href="careers.html">Careers</a></li>
           <li><a href="mailto:hello@basinfoundry.com">Contact</a></li>
           <li><a href="#">Legal</a></li>
         </ul>

@@ -1,12 +1,60 @@
 (function () {
   const CALENDAR_URL = 'https://calendar.app.google/YgQM5JgadAKXQqw39';
 
+  const dialog = document.getElementById('booking-dialog');
   const form = document.getElementById('booking-form');
   const overlay = document.getElementById('booking-success-overlay');
   const errEl = document.getElementById('booking-form-error');
   const submitBtn = document.getElementById('booking-submit');
 
   if (!form || !overlay) return;
+
+  function openBookingDialog() {
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    dialog.showModal();
+  }
+
+  function closeBookingDialog() {
+    if (!dialog || typeof dialog.close !== 'function') return;
+    dialog.close();
+  }
+
+  document.querySelectorAll('.js-booking-open').forEach(function (el) {
+    el.addEventListener('click', function () {
+      openBookingDialog();
+    });
+  });
+
+  var closeBtn = document.querySelector('.booking-dialog-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      closeBookingDialog();
+    });
+  }
+
+  function showError(msg) {
+    if (!errEl) return;
+    errEl.textContent = msg || '';
+    errEl.hidden = !msg;
+  }
+
+  if (dialog) {
+    dialog.addEventListener('close', function () {
+      showError('');
+    });
+  }
+
+  function openFromHash() {
+    if (location.hash !== '#contact') return;
+    openBookingDialog();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openFromHash);
+  } else {
+    openFromHash();
+  }
+  window.addEventListener('hashchange', openFromHash);
 
   form.querySelectorAll('.booking-chip input[type="checkbox"]').forEach(function (inp) {
     var chip = inp.closest('.booking-chip');
@@ -17,12 +65,6 @@
     inp.addEventListener('change', sync);
     sync();
   });
-
-  function showError(msg) {
-    if (!errEl) return;
-    errEl.textContent = msg || '';
-    errEl.hidden = !msg;
-  }
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -65,6 +107,8 @@
       if (!res.ok) {
         throw new Error(data.error || 'Something went wrong. Please try again.');
       }
+
+      closeBookingDialog();
 
       overlay.hidden = false;
       overlay.setAttribute('aria-hidden', 'false');
