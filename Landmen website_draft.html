@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Basinfoundry — Workflow automation for land services firms</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -384,16 +386,95 @@
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
+<!-- ===== FINAL CTA / BOOKING ===== -->
 <section class="final" id="contact">
-  <div class="container">
+  <div class="container booking-section-inner">
     <div class="section-label" style="justify-content:center;">Next step</div>
     <h2>Let's talk <em>efficiency.</em></h2>
-    <p>Book a 30-minute call. We'll walk through where your projects actually bottleneck and where Basinfoundry fits. If there's a match, we'll scope a pilot on one of your upcoming projects.</p>
-    <a href="mailto:hello@basinfoundry.com" class="btn-primary">Book a 30-min walkthrough →</a>
-    <div class="final-note">No slides. No generic demo. Your project, your numbers.</div>
+    <p class="booking-lead">
+      Tell us a bit about your firm so we can prep for the call. Then pick a time that works — no slides, no generic demo.
+    </p>
+
+    <div id="booking-form-error" class="booking-form-error" role="alert" hidden></div>
+
+    <form id="booking-form" class="booking-form" novalidate>
+      <div class="booking-grid">
+        <label class="booking-field">
+          <span class="booking-label">Full name</span>
+          <input type="text" name="fullName" autocomplete="name" required maxlength="200" placeholder="Jordan Ellis" />
+        </label>
+        <label class="booking-field">
+          <span class="booking-label">Work email</span>
+          <input type="email" name="workEmail" autocomplete="email" required maxlength="200" placeholder="you@yourfirm.com" />
+        </label>
+        <label class="booking-field">
+          <span class="booking-label">Phone number</span>
+          <input type="tel" name="phone" autocomplete="tel" required maxlength="40" placeholder="+1 …" />
+        </label>
+        <label class="booking-field">
+          <span class="booking-label">Company name</span>
+          <input type="text" name="companyName" autocomplete="organization" required maxlength="200" placeholder="Your firm" />
+        </label>
+        <label class="booking-field booking-field-wide">
+          <span class="booking-label">Role / title</span>
+          <input type="text" name="roleTitle" autocomplete="organization-title" required maxlength="200" placeholder="President, VP Operations, Managing Partner…" />
+        </label>
+        <label class="booking-field">
+          <span class="booking-label">Firm size</span>
+          <select name="firmSize" required>
+            <option value="" disabled selected>Select range</option>
+            <option value="1-10">1–10 employees</option>
+            <option value="11-25">11–25 employees</option>
+            <option value="26-75">26–75 employees</option>
+            <option value="76-200">76–200 employees</option>
+            <option value="200+">200+ employees</option>
+          </select>
+        </label>
+      </div>
+
+      <fieldset class="booking-fieldset">
+        <legend class="booking-label">Primary work type <span class="booking-hint">(select all that apply)</span></legend>
+        <div class="booking-chips">
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="Oil & gas title" /> Oil &amp; gas title</label>
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="Renewables (solar/wind)" /> Renewables (solar/wind)</label>
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="Pipeline / midstream" /> Pipeline / midstream</label>
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="ROW & leasing" /> ROW &amp; leasing</label>
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="Mineral management" /> Mineral management</label>
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="Municipal / DOT" /> Municipal / DOT</label>
+          <label class="booking-chip"><input type="checkbox" name="workTypes" value="Other" /> Other</label>
+        </div>
+      </fieldset>
+
+      <label class="booking-field booking-field-block">
+        <span class="booking-label">What's driving your interest?</span>
+        <textarea name="interestReason" rows="3" maxlength="2000" placeholder="Throughput, hiring, fixed-price pressure, renewables RFPs…"></textarea>
+      </label>
+
+      <label class="booking-field booking-field-block">
+        <span class="booking-label">How did you hear about us?</span>
+        <textarea name="referralSource" rows="2" maxlength="500" placeholder="Referral, LinkedIn, conference…"></textarea>
+      </label>
+
+      <div class="booking-actions">
+        <button type="submit" class="btn-primary" id="booking-submit">Continue to scheduling →</button>
+        <div class="final-note booking-actions-note">Company email required · Consumer addresses (Gmail, Yahoo, etc.) are filtered.</div>
+      </div>
+    </form>
   </div>
 </section>
+
+<div id="booking-success-overlay" class="booking-success-overlay" hidden aria-hidden="true">
+  <div class="booking-success-card">
+    <svg class="booking-success-check" viewBox="0 0 64 64" aria-hidden="true">
+      <circle class="booking-success-circle" cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2" />
+      <path class="booking-success-path" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M18 33l10 10 18-22" />
+    </svg>
+    <h3 class="booking-success-title">You're set</h3>
+    <p class="booking-success-sub">Opening the calendar…</p>
+  </div>
+</div>
+
+<script src="booking-form.js" defer></script>
 
 <!-- ===== FOOTER ===== -->
 <footer>
