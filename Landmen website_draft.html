@@ -409,6 +409,7 @@
     <div id="booking-form-error" class="booking-form-error" role="alert" hidden></div>
 
     <form id="booking-form" class="booking-form" novalidate>
+      <div class="booking-form-body">
       <div class="booking-grid">
         <label class="booking-field">
           <span class="booking-label">Full name</span>
@@ -425,21 +426,6 @@
         <label class="booking-field">
           <span class="booking-label">Company name</span>
           <input type="text" name="companyName" autocomplete="organization" required maxlength="200" placeholder="Your firm" />
-        </label>
-        <label class="booking-field booking-field-wide">
-          <span class="booking-label">Role / title</span>
-          <input type="text" name="roleTitle" autocomplete="organization-title" required maxlength="200" placeholder="President, VP Operations, Managing Partner…" />
-        </label>
-        <label class="booking-field">
-          <span class="booking-label">Firm size</span>
-          <select name="firmSize" required>
-            <option value="" disabled selected>Select range</option>
-            <option value="1-10">1–10 employees</option>
-            <option value="11-25">11–25 employees</option>
-            <option value="26-75">26–75 employees</option>
-            <option value="76-200">76–200 employees</option>
-            <option value="200+">200+ employees</option>
-          </select>
         </label>
       </div>
 
@@ -458,17 +444,17 @@
 
       <label class="booking-field booking-field-block">
         <span class="booking-label">What's driving your interest?</span>
-        <textarea name="interestReason" rows="3" maxlength="2000" placeholder="Throughput, hiring, fixed-price pressure, renewables RFPs…"></textarea>
+        <textarea name="interestReason" rows="2" maxlength="2000" placeholder="Throughput, hiring, fixed-price pressure, renewables RFPs…"></textarea>
       </label>
 
       <label class="booking-field booking-field-block">
         <span class="booking-label">How did you hear about us?</span>
         <textarea name="referralSource" rows="2" maxlength="500" placeholder="Referral, LinkedIn, conference…"></textarea>
       </label>
+      </div>
 
       <div class="booking-actions">
         <button type="submit" class="btn-primary" id="booking-submit">Continue to scheduling →</button>
-        <div class="final-note booking-actions-note">Company email required · Consumer addresses (Gmail, Yahoo, etc.) are filtered.</div>
       </div>
     </form>
   </div>

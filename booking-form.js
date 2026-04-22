@@ -81,8 +81,6 @@
       workEmail: form.elements.workEmail.value.trim(),
       phone: form.elements.phone.value.trim(),
       companyName: form.elements.companyName.value.trim(),
-      roleTitle: form.elements.roleTitle.value.trim(),
-      firmSize: form.elements.firmSize.value,
       workTypes,
       interestReason: form.elements.interestReason.value.trim(),
       referralSource: form.elements.referralSource.value.trim(),

@@ -2,8 +2,6 @@ const { createClient } = require('@supabase/supabase-js');
 
 const CALENDAR_URL = 'https://calendar.app.google/YgQM5JgadAKXQqw39';
 
-const FIRM_SIZES = new Set(['1-10', '11-25', '26-75', '76-200', '200+']);
-
 const WORK_TYPE_OPTIONS = [
   'Oil & gas title',
   'Renewables (solar/wind)',
@@ -62,8 +60,6 @@ function validatePayload(body) {
   const workEmail = normalizeEmail(body.workEmail);
   const phone = String(body.phone || '').trim();
   const companyName = String(body.companyName || '').trim();
-  const roleTitle = String(body.roleTitle || '').trim();
-  const firmSize = String(body.firmSize || '').trim();
   const workTypes = Array.isArray(body.workTypes) ? body.workTypes : [];
   const interestReason = String(body.interestReason || '').trim();
   const referralSource = String(body.referralSource || '').trim();
@@ -85,12 +81,6 @@ function validatePayload(body) {
   }
   if (!companyName || companyName.length > 200) {
     return { error: 'Please enter your company name.' };
-  }
-  if (!roleTitle || roleTitle.length > 200) {
-    return { error: 'Please enter your role or title.' };
-  }
-  if (!FIRM_SIZES.has(firmSize)) {
-    return { error: 'Please select firm size.' };
   }
   const normalizedTypes = [];
   for (const t of workTypes) {
@@ -115,8 +105,8 @@ function validatePayload(body) {
       work_email: workEmail,
       phone,
       company_name: companyName,
-      role_title: roleTitle,
-      firm_size: firmSize,
+      role_title: '—',
+      firm_size: '—',
       primary_work_types: normalizedTypes,
       interest_reason: interestReason || null,
       referral_source: referralSource || null,
@@ -216,8 +206,6 @@ module.exports = async function handler(req, res) {
       <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Work email</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.work_email)}</td></tr>
       <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Phone</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.phone)}</td></tr>
       <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Company</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.company_name)}</td></tr>
-      <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Role / title</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.role_title)}</td></tr>
-      <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Firm size</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.firm_size)}</td></tr>
       <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Primary work types</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${typesList}</td></tr>
       <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>What is driving interest?</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.interest_reason) || '—'}</td></tr>
       <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>How did they hear about us?</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">${escapeHtml(row.referral_source) || '—'}</td></tr>
