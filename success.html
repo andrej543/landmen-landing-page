@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Success - Basinfoundry</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="site-shell theme-field">
+  <nav class="topbar">
+    <a href="/" class="brand" aria-label="Basinfoundry home"><span class="brand__mark"></span><span>Basinfoundry</span></a>
+    <div class="nav-links" aria-label="Primary navigation">
+      <div class="nav-item"><a href="products.html">Products</a><div class="nav-menu"><a href="land-management.html">Land Management</a><a href="landman-workflows.html">Landman Workflows</a><a href="operators.html">Operators</a></div></div>
+      <div class="nav-item"><a href="services.html">Services</a><div class="nav-menu"><a href="services.html#team">Landmen + tech + lawyers</a><a href="services.html#hard-title">Hard-to-obtain title</a><a href="services.html#embedded-engineer">Embedded engineer</a></div></div>
+      <div class="nav-item"><a href="resources.html">Resources</a><div class="nav-menu"><a href="resources.html#podcast">Podcast</a><a href="resources.html#research">Research</a></div></div>
+      <a href="careers.html">Careers</a>
+      <a href="/#about">About Us</a>
+    </div>
+    <a class="nav-cta" href="booking.html">Book Demo</a>
+  </nav>
+
+  <section class="success-page">
+    <div class="success-panel">
+      <svg class="success-check" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2" />
+        <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M18 33l10 10 18-22" />
+      </svg>
+      <p class="eyebrow" id="success-eyebrow">Request received</p>
+      <h1 id="success-title">You are on the list.</h1>
+      <p class="hero__subhead" id="success-copy">We saved your request and will follow up with the next step.</p>
+      <div class="success-actions">
+        <a class="btn btn--dark" href="index.html">Back home</a>
+        <a class="btn btn--line" href="booking.html">Book Demo</a>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  (function () {
+    var source = new URLSearchParams(window.location.search).get('source') || 'waitlist';
+    var copy = {
+      'try-now': {
+        eyebrow: 'Access request received',
+        title: 'We will get your workspace path ready.',
+        body: 'Your Try Now request is in. We will review the workflow you picked and send the next onboarding step.'
+      },
+      podcast: {
+        eyebrow: 'Podcast updates',
+        title: 'You will hear when the next episode drops.',
+        body: 'You are on the Modern Land Desk update list.'
+      },
+      research: {
+        eyebrow: 'Research updates',
+        title: 'You will get the next field brief.',
+        body: 'You are on the list for tract signal and title risk research updates.'
+      },
+      waitlist: {
+        eyebrow: 'Request received',
+        title: 'You are on the list.',
+        body: 'We saved your request and will follow up with the next step.'
+      }
+    }[source] || null;
+
+    if (!copy) return;
+    document.getElementById('success-eyebrow').textContent = copy.eyebrow;
+    document.getElementById('success-title').textContent = copy.title;
+    document.getElementById('success-copy').textContent = copy.body;
+  })();
+</script>
+</body>
+</html>

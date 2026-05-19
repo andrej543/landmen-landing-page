@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/Landmen website_draft.html" }
+    { "source": "/", "destination": "/index.html" }
   ]
 }

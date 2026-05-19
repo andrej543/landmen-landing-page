@@ -19,10 +19,10 @@
     dialog.close();
   }
 
-  document.querySelectorAll('.js-booking-open').forEach(function (el) {
-    el.addEventListener('click', function () {
+  document.addEventListener('click', function (event) {
+    if (event.target.closest('.js-booking-open')) {
       openBookingDialog();
-    });
+    }
   });
 
   var closeBtn = document.querySelector('.booking-dialog-close');

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Careers - Basinfoundry</title>
+<title>Resources - Basinfoundry</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,23 +26,44 @@
   </nav>
 
   <section class="page-hero">
-    <p class="eyebrow">Careers</p>
-    <h1>Build the operating layer for land work.</h1>
-    <p class="hero__subhead">We hire people who understand field work, title pressure, customer urgency, and the discipline required to turn messy workflows into reliable systems.</p>
+    <p class="eyebrow">Resources</p>
+    <h1>Research and conversations for modern land teams.</h1>
+    <p class="hero__subhead">A focused library for operators, land managers, land service companies, and attorneys watching the land workflow change.</p>
   </section>
 
-  <section class="section careers-section">
-    <div class="career-copy">
-      <p class="eyebrow">Open Roles</p>
-      <h2>Currently hiring.</h2>
-      <p class="section-lede">These roles are focused on land execution, data quality, and commercial growth.</p>
-    </div>
-    <div class="job-list">
-      <article><span>Open role</span><strong>Landman - North Dakota</strong><a href="mailto:careers@basinfoundry.com?subject=Landman%20-%20North%20Dakota">Apply</a></article>
-      <article><span>Open role</span><strong>Senior Data Analyst</strong><a href="mailto:careers@basinfoundry.com?subject=Senior%20Data%20Analyst">Apply</a></article>
-      <article><span>Open role</span><strong>Senior Sales Executive</strong><a href="mailto:careers@basinfoundry.com?subject=Senior%20Sales%20Executive">Apply</a></article>
+  <section class="section resources-section">
+    <div class="resource-grid">
+      <article class="resource-card" id="podcast">
+        <span>Podcast</span>
+        <h3>The Modern Land Desk</h3>
+        <p>Conversations with operators, land brokers, attorneys, and data teams on how land work is changing.</p>
+        <a href="#podcast-notify" class="js-waitlist-open" data-waitlist-source="podcast">Get notified</a>
+      </article>
+      <article class="resource-card" id="research">
+        <span>Research</span>
+        <h3>Permian Tract Signals Q2</h3>
+        <p>A practical research brief on tract movement, operator activity, leasing momentum, and title risk patterns.</p>
+        <a href="#research-notify" class="js-waitlist-open" data-waitlist-source="research">Get notified</a>
+      </article>
     </div>
   </section>
+
+  <dialog id="waitlist-dialog" class="notify-dialog" aria-labelledby="waitlist-dialog-title">
+    <button type="button" class="notify-dialog-close" aria-label="Close notification form">&times;</button>
+    <p class="eyebrow">Updates</p>
+    <h2 id="waitlist-dialog-title">Get notified</h2>
+    <p id="waitlist-dialog-intro" class="notify-dialog-intro">Leave your email and we will send updates when they go live.</p>
+    <form class="notify-form" data-waitlist-form novalidate>
+      <input id="waitlist-source" type="hidden" name="source" value="podcast">
+      <input id="waitlist-interest" type="hidden" name="interest" value="Podcast updates">
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" required maxlength="200" placeholder="you@company.com">
+      </label>
+      <div class="form-message" data-form-message role="alert" hidden></div>
+      <button id="waitlist-submit" class="btn btn--dark" type="submit">Notify me</button>
+    </form>
+  </dialog>
 
   <footer class="site-footer">
     <div class="brand"><span class="brand__mark"></span><span>Basinfoundry</span></div>
@@ -50,5 +71,6 @@
     <a href="mailto:hello@basinfoundry.com">hello@basinfoundry.com</a>
   </footer>
 </main>
+<script src="waitlist-form.js" defer></script>
 </body>
 </html>
