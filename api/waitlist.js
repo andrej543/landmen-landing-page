@@ -1,7 +1,7 @@
 const { createClient } = require('@supabase/supabase-js');
 
 const SOURCE_LABELS = {
-  'try-now': 'Try Now access request',
+  'try-now': 'Try Now freemium signup',
   podcast: 'Podcast updates',
   research: 'Research updates',
 };
@@ -43,8 +43,8 @@ function validatePayload(body) {
   if (source === 'try-now' && !fullName) {
     return { error: 'Please enter your name.' };
   }
-  if (source === 'try-now' && !companyName) {
-    return { error: 'Please enter your company name.' };
+  if (source === 'try-now' && !phone) {
+    return { error: 'Please enter your phone number.' };
   }
 
   return {

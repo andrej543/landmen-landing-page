@@ -43,6 +43,7 @@
     data.forEach(function (value, key) {
       payload[key] = String(value || '').trim();
     });
+    delete payload.password;
     payload.pagePath = window.location.pathname + window.location.search + window.location.hash;
     return payload;
   }
@@ -86,7 +87,7 @@
 
       const button = form.querySelector('[type="submit"]');
       const payload = getPayload(form);
-      syncButton(button, true, 'Sending...');
+      syncButton(button, true, button?.dataset.loadingLabel || 'Sending...');
 
       try {
         const data = await submitPayload(payload);
